@@ -21,12 +21,39 @@
 */
 #include <iostream>
 #include <vector>
-
-using namespace std;
+#include "matrix.h"
 
 int main()
 {
-  vector< vector<float> > test;
-  cout << "testing" << endl;
+  
+  std::vector< std::vector<float > > initial_grid(7, std::vector<float>(5, 0.4));
+
+  Matrix matrixa(initial_grid);
+  
+  //Print matrixa
+  matrixa.matrix_print();
+
+  // Print number of row
+  std::cout << matrixa.getRows();
+
+  //Print the number of columns
+  std::cout << matrixa.getColumns();
+
+  // Transpose matrix
+  Matrix transposed = matrixa.matrix_transpose();
+
+  // Print transposed matrix
+  transposed.matrix_print();
+
+  // 7x5 2-dimensional vector with values 0.2
+  std::vector <std:: vector <float> > 
+      second_grid (7, std::vector <float>(5, 0.2));
+
+  Matrix matrixb(second_grid);
+
+  Matrix matrixsum(matrixa.matrix_addition(matrixb));
+
+  matrixsum.matrix_print();
+
   return 0;
 }
